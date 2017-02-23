@@ -32,4 +32,11 @@ public class LoanSystemController {
         return applicationsRepository.findAll();
     }
 
+    @RequestMapping(value = "/app/new", method = RequestMethod.POST)
+    public void insertCategory(){
+        Application app = new Application();
+        app.setAmount(4444);
+        applicationsRepository.save(app);
+    }
+
 }
