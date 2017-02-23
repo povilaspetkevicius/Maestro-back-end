@@ -1,4 +1,4 @@
-package com.LoansSystem;
+package com.loanssystem;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

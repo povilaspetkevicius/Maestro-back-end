@@ -1,4 +1,4 @@
-package com.LoansSystem;
+package com.loanssystem;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
