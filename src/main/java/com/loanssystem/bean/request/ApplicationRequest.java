@@ -6,16 +6,8 @@ package com.loanssystem.bean.request;
  * Class used for getting Request body's info
  */
 public class ApplicationRequest {
-    private Long id;
     private Long amount;
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private String name;
 
     public Long getAmount() {
         return amount;
@@ -23,5 +15,9 @@ public class ApplicationRequest {
 
     public void setAmount(Long amount) {
         this.amount = amount;
+    }
+
+    public String getName() {
+        return name;
     }
 }

@@ -21,8 +21,8 @@ public class ApplicationService {
 
     public void createApplication(ApplicationRequest applicationRequest){
         Application application = new Application();
-        application.setId(applicationRequest.getId());
         application.setAmount(applicationRequest.getAmount());
+        application.setName(applicationRequest.getName());
         applicationsRepository.save(application);
     }
 

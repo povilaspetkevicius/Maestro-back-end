@@ -14,6 +14,7 @@ public class Application {
     @Column(name = "id")
     private long id;
     private long amount;
+    private String name;
 
     public Application(){}
 
@@ -34,10 +35,17 @@ public class Application {
         this.amount = amount;
     }
 
+    public String getName() {
+        return name;
+    }
 
+    public void setName(String name) {
+        this.name = name;
+    }
 
-    public Application(long id, long amount) {
+    public Application(long id, long amount, String name) {
         this.id = id;
         this.amount = amount;
+        this.name = name;
     }
 }

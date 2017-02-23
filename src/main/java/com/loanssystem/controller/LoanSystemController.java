@@ -26,13 +26,13 @@ public class LoanSystemController {
     }
 
     //Method for viewing all applications from applications repo
-    @RequestMapping(value = "/Applications", method = RequestMethod.GET)
+    @RequestMapping(value = "/applications", method = RequestMethod.GET)
     public Iterable<Application> getApplications(){
         return applicationsRepository.findAll();
     }
 
     //Method for posting an application to app repo
-    @RequestMapping(value = "/Applications/create", produces = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/application/create", produces = "application/json",method = RequestMethod.POST)
     public void addApplication(@RequestBody ApplicationRequest applicationRequest){
         applicationService.createApplication(applicationRequest);
     }
