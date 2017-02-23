@@ -1,9 +1,11 @@
-package com.loanssystem.bean;
+package com.loanssystem.bean.entity;
 
 import javax.persistence.*;
 
 /**
  * Created by pov on 17.2.23.
+ *
+ *
  */
 @Entity(name = "applications")
 public class Application {
@@ -12,6 +14,9 @@ public class Application {
     @Column(name = "id")
     private long id;
     private long amount;
+
+    public Application(){}
+
 
     public long getId() {
         return id;
@@ -26,6 +31,13 @@ public class Application {
     }
 
     public void setAmount(long amount) {
+        this.amount = amount;
+    }
+
+
+
+    public Application(long id, long amount) {
+        this.id = id;
         this.amount = amount;
     }
 }
