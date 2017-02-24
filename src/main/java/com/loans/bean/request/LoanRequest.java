@@ -22,6 +22,7 @@ public class LoanRequest {
     private String phoneNum2;
     private String email;
     private int salary;
+    private boolean status;
 
     public double getLoan_Amount() {
         return loan_Amount;
@@ -85,5 +86,9 @@ public class LoanRequest {
 
     public String getEmail() {
         return email;
+    }
+
+    public boolean getStatus() {
+        return status;
     }
 }

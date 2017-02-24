@@ -39,6 +39,7 @@ public class LoanService {
         application.setPhoneNum1(loanRequest.getPhoneNum1());
         application.setPhoneNum2(loanRequest.getPhoneNum2());
         application.setEmail(loanRequest.getEmail());
+        application.setStatus(loanRequest.getStatus());
         applicationsRepository.save(application);
     }
     public void editDraft(Loan loan, LoanRequest loanRequest){
@@ -106,6 +107,10 @@ public class LoanService {
         }
         if (application.getEmail()!=loanRequest.getEmail()){
             application.setEmail(loanRequest.getEmail());
+            change = true;
+        }
+        if (application.isStatus()!=loanRequest.getStatus()){
+            application.setStatus(loanRequest.getStatus());
             change = true;
         }
 

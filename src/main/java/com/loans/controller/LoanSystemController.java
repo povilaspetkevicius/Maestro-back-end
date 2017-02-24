@@ -45,6 +45,11 @@ public class LoanSystemController {
         Loan loan = loanRepository.findByuniqueLoanId(uid);
         loanService.editDraft(loan,loanRequest);
     }
+    @RequestMapping(value = "/loan/status", method = RequestMethod.GET)
+    public boolean getStatus(@RequestParam(value = "uniqueLoanId") String uid){
+        Loan loan = loanRepository.findByuniqueLoanId(uid);
+        return loan.isStatus();
+    }
 
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)

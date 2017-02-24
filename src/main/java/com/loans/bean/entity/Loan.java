@@ -31,6 +31,7 @@ public class Loan {
     private String phoneNum2;
     private String email;
     private int salary;
+    private boolean status;
 
     public Loan(){}
 
@@ -173,5 +174,13 @@ public class Loan {
     public void setUniqueLoanId() {
         UUID uuid = UUID.randomUUID();
         this.uniqueLoanId = String.valueOf(uuid);
+    }
+
+    public boolean isStatus() {
+        return status;
+    }
+
+    public void setStatus(boolean status) {
+        this.status = status;
     }
 }
