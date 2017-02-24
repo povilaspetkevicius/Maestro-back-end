@@ -1,5 +1,6 @@
 package com.loans;
 
+import com.loans.controller.LoanSystemController;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 

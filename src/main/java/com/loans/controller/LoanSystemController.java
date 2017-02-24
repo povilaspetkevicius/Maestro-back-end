@@ -41,7 +41,7 @@ public class LoanSystemController {
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
     public void insertCategory(){
         Loan app = new Loan();
-        app.setAmount(4444);
+        app.setLoan_Amount(4444);
         loanRepository.save(app);
     }
 
