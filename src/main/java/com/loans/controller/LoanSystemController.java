@@ -36,6 +36,10 @@ public class LoanSystemController {
     public void addLoan(@RequestBody LoanRequest applicationRequest){
         loanService.createApplication(applicationRequest);
     }
+    @RequestMapping(value = "loan/edit", method = RequestMethod.GET)
+    public Iterable<Loan> getLoanDraftByUID(@RequestParam(value = "uniqueLoanId") String uid){
+        return loanRepository.findByuniqueLoanId(uid);
+    }
 
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
