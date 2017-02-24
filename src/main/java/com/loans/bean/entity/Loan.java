@@ -17,6 +17,7 @@ public class Loan {
     private int loan_Repay_Year;
     private int loan_Repay_Months;
     private int loan_Payday;
+    private int salary;
 
     public Loan(){}
 
@@ -53,11 +54,15 @@ public class Loan {
         this.loan_Payday = loan_Payday;
     }
 
-    public Loan(long id, double loan_Amount, int loan_Repay_Year, int loan_Repay_Months, int loan_Payday) {
-        this.id = id;
+    public void setSalary(int salary) {
+        this.salary = salary;
+    }
+
+    public Loan(double loan_Amount, int loan_Repay_Year, int loan_Repay_Months, int loan_Payday, int salary) {
         this.loan_Amount = loan_Amount;
         this.loan_Repay_Year = loan_Repay_Year;
         this.loan_Repay_Months = loan_Repay_Months;
         this.loan_Payday = loan_Payday;
+        this.salary = salary;
     }
 }

@@ -25,6 +25,7 @@ public class LoanService {
         application.setLoan_Repay_Year(applicationRequest.getLoan_Repay_Year());
         application.setLoan_Repay_Months(applicationRequest.getLoan_Repay_Months());
         application.setLoan_Payday(applicationRequest.getLoan_Payday());
+        application.setSalary(applicationRequest.getSalary());
         applicationsRepository.save(application);
     }
 

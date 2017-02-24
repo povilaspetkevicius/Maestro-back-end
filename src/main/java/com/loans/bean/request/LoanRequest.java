@@ -10,6 +10,7 @@ public class LoanRequest {
     private int loan_Repay_Year;
     private int loan_Repay_Months;
     private int loan_Payday;
+    private int salary;
 
     public double getLoan_Amount() {
         return loan_Amount;
@@ -25,5 +26,9 @@ public class LoanRequest {
 
     public int getLoan_Payday() {
         return loan_Payday;
+    }
+
+    public int getSalary() {
+        return salary;
     }
 }
