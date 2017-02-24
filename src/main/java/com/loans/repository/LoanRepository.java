@@ -10,5 +10,5 @@ import org.springframework.data.repository.CrudRepository;
  *
  */
 public interface LoanRepository extends CrudRepository<Loan,Long>{
-    public Iterable<Loan> findByuniqueLoanId(String uniqueLoadId);
+    public Loan findByuniqueLoanId(String uniqueLoadId);
 }

@@ -36,9 +36,14 @@ public class LoanSystemController {
     public void addLoan(@RequestBody LoanRequest applicationRequest){
         loanService.createApplication(applicationRequest);
     }
-    @RequestMapping(value = "loan/edit", method = RequestMethod.GET)
-    public Iterable<Loan> getLoanDraftByUID(@RequestParam(value = "uniqueLoanId") String uid){
+    @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
+    public Loan getLoanDraftByUID(@RequestParam(value = "uniqueLoanId") String uid){
         return loanRepository.findByuniqueLoanId(uid);
+    }
+    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.POST)
+    public void editLoanDraftbyUID(@RequestParam (value = "uniqueLoanId") String uid, @RequestBody LoanRequest loanRequest){
+        Loan loan = loanRepository.findByuniqueLoanId(uid);
+        loanService.editDraft(loan,loanRequest);
     }
 
 

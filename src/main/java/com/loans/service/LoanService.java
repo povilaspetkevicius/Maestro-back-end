@@ -41,6 +41,18 @@ public class LoanService {
         application.setEmail(applicationRequest.getEmail());
         applicationsRepository.save(application);
     }
+    public void editDraft(Loan loan, LoanRequest loanRequest){
+        Loan application = loan;
+        boolean change = false;
+        if (application.getLoan_Amount()!=loanRequest.getLoan_Amount()){
+            application.setLoan_Amount(loanRequest.getLoan_Amount());
+            change = true;
+        }
+        if (change){
+            applicationsRepository.delete(loan);
+            applicationsRepository.save(application);
+        }
+    }
 
 
 }
