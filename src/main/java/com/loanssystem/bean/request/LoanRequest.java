@@ -6,18 +6,24 @@ package com.loanssystem.bean.request;
  * Class used for getting Request body's info
  */
 public class LoanRequest {
-    private Long amount;
-    private String name;
+    private double loan_Amount;
+    private int loan_Repay_Year;
+    private int loan_Repay_Months;
+    private int loan_Payday;
 
-    public Long getAmount() {
-        return amount;
+    public double getLoan_Amount() {
+        return loan_Amount;
     }
 
-    public void setAmount(Long amount) {
-        this.amount = amount;
+    public int getLoan_Repay_Year() {
+        return loan_Repay_Year;
     }
 
-    public String getName() {
-        return name;
+    public int getLoan_Repay_Months() {
+        return loan_Repay_Months;
+    }
+
+    public int getLoan_Payday() {
+        return loan_Payday;
     }
 }

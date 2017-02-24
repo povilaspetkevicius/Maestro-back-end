@@ -26,13 +26,13 @@ public class LoanSystemController {
     }
 
     //Method for viewing all applications from applications repo
-    @RequestMapping(value = "/applications", method = RequestMethod.GET)
+    @RequestMapping(value = "/loans", method = RequestMethod.GET)
     public Iterable<Loan> getApplications(){
         return applicationsRepository.findAll();
     }
 
     //Method for posting an application to app repo
-    @RequestMapping(value = "/application/create", produces = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
     public void addApplication(@RequestBody LoanRequest applicationRequest){
         applicationService.createApplication(applicationRequest);
     }
@@ -41,7 +41,7 @@ public class LoanSystemController {
     @RequestMapping(value = "/app/new", method = RequestMethod.POST)
     public void insertCategory(){
         Loan app = new Loan();
-        app.setAmount(4444);
+        app.setLoan_Amount(4444);
         applicationsRepository.save(app);
     }
 
