@@ -1,6 +1,6 @@
 package com.loanssystem.repository;
 
-import com.loanssystem.bean.entity.Application;
+import com.loanssystem.bean.entity.Loan;
 import org.springframework.data.repository.CrudRepository;
 
 /**
@@ -9,5 +9,5 @@ import org.springframework.data.repository.CrudRepository;
  * Basic Repository used for containing all Applications
  *
  */
-public interface ApplicationsRepository extends CrudRepository<Application,Long>{
+public interface LoanRepository extends CrudRepository<Loan,Long>{
 }

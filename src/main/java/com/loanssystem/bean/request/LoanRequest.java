@@ -5,7 +5,7 @@ package com.loanssystem.bean.request;
  *
  * Class used for getting Request body's info
  */
-public class ApplicationRequest {
+public class LoanRequest {
     private Long amount;
     private String name;
 

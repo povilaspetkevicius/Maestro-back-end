@@ -8,7 +8,7 @@ import javax.persistence.*;
  *
  */
 @Entity(name = "applications")
-public class Application {
+public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
@@ -16,7 +16,7 @@ public class Application {
     private long amount;
     private String name;
 
-    public Application(){}
+    public Loan(){}
 
 
     public long getId() {
@@ -43,7 +43,7 @@ public class Application {
         this.name = name;
     }
 
-    public Application(long id, long amount, String name) {
+    public Loan(long id, long amount, String name) {
         this.id = id;
         this.amount = amount;
         this.name = name;
