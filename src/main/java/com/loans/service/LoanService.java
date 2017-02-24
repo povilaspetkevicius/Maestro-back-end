@@ -1,8 +1,8 @@
-package com.loanssystem.service;
+package com.loans.service;
 
-import com.loanssystem.bean.request.LoanRequest;
-import com.loanssystem.repository.LoanRepository;
-import com.loanssystem.bean.entity.Loan;
+import com.loans.bean.request.LoanRequest;
+import com.loans.repository.LoanRepository;
+import com.loans.bean.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

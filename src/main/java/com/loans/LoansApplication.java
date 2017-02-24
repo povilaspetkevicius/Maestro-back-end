@@ -1,13 +1,13 @@
-package com.loanssystem;
+package com.loans;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class LoansystemApplication {
+public class LoansApplication {
 
 
 	public static void main(String[] args) {
-		SpringApplication.run(LoansystemApplication.class, args);
+		SpringApplication.run(LoansApplication.class, args);
 	}
 }

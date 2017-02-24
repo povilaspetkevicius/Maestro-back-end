@@ -1,6 +1,6 @@
-package com.loanssystem.repository;
+package com.loans.repository;
 
-import com.loanssystem.bean.entity.Loan;
+import com.loans.bean.entity.Loan;
 import org.springframework.data.repository.CrudRepository;
 
 /**
