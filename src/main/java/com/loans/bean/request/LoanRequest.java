@@ -1,4 +1,4 @@
-package com.loanssystem.bean.request;
+package com.loans.bean.request;
 
 /**
  * Created by pov on 17.2.23.

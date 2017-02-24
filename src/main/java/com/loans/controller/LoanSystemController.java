@@ -1,9 +1,9 @@
-package com.loanssystem.controller;
+package com.loans.controller;
 
-import com.loanssystem.service.LoanService;
-import com.loanssystem.bean.request.LoanRequest;
-import com.loanssystem.repository.LoanRepository;
-import com.loanssystem.bean.entity.Loan;
+import com.loans.service.LoanService;
+import com.loans.bean.request.LoanRequest;
+import com.loans.repository.LoanRepository;
+import com.loans.bean.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -15,9 +15,9 @@ import org.springframework.web.bind.annotation.*;
 public class LoanSystemController {
 
     @Autowired
-    private LoanRepository applicationsRepository;
+    private LoanRepository loanRepository;
     @Autowired
-    private LoanService applicationService;
+    private LoanService loanService;
 
     @RequestMapping(value = "/", method = RequestMethod.GET)
     public String helloWorld() {
@@ -27,22 +27,22 @@ public class LoanSystemController {
 
     //Method for viewing all applications from applications repo
     @RequestMapping(value = "/loans", method = RequestMethod.GET)
-    public Iterable<Loan> getApplications(){
-        return applicationsRepository.findAll();
+    public Iterable<Loan> getLoans(){
+        return loanRepository.findAll();
     }
 
     //Method for posting an application to app repo
     @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
-    public void addApplication(@RequestBody LoanRequest applicationRequest){
-        applicationService.createApplication(applicationRequest);
+    public void addLoan(@RequestBody LoanRequest applicationRequest){
+        loanService.createApplication(applicationRequest);
     }
 
 
-    @RequestMapping(value = "/app/new", method = RequestMethod.POST)
+    @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
     public void insertCategory(){
         Loan app = new Loan();
-        app.setLoan_Amount(4444);
-        applicationsRepository.save(app);
+        app.setAmount(4444);
+        loanRepository.save(app);
     }
 
 }

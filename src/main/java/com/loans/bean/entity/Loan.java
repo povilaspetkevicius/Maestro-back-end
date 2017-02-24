@@ -1,4 +1,4 @@
-package com.loanssystem.bean.entity;
+package com.loans.bean.entity;
 
 import javax.persistence.*;
 
