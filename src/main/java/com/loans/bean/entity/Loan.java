@@ -1,6 +1,7 @@
 package com.loans.bean.entity;
 
 import javax.persistence.*;
+import java.util.UUID;
 
 /**
  * Created by pov on 17.2.23.
@@ -13,6 +14,7 @@ public class Loan {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private long id;
+    private String uniqueLoanId;
     private double loan_Amount;
     private int loan_Repay_Year;
     private int loan_Repay_Months;
@@ -162,5 +164,14 @@ public class Loan {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getUniqueLoanId() {
+        return uniqueLoanId;
+    }
+
+    public void setUniqueLoanId() {
+        UUID uuid = UUID.randomUUID();
+        this.uniqueLoanId = String.valueOf(uuid);
     }
 }

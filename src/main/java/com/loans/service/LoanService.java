@@ -22,6 +22,7 @@ public class LoanService {
     public void createApplication(LoanRequest applicationRequest){
         Loan application = new Loan();
         application.getId();
+        application.setUniqueLoanId();
         application.setLoan_Amount(applicationRequest.getLoan_Amount());
         application.setLoan_Repay_Year(applicationRequest.getLoan_Repay_Year());
         application.setLoan_Repay_Months(applicationRequest.getLoan_Repay_Months());
