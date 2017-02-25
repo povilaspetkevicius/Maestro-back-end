@@ -15,7 +15,7 @@ import java.util.Date;
 /**
  * Created by pov on 17.2.23.
  */
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoanSystemController {
 
@@ -42,20 +42,18 @@ public class LoanSystemController {
         loanService.createApplication(applicationRequest);
     }
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
-    public Loan getLoanDraftByUID(@RequestParam(value = "uniqueLoanId") String uid){
-        //return loanRepository.findByuniqueLoanId(uid); POVILAI
-        return new Loan();
+    public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
+        return loanRepository.findByCode(code);
     }
     @RequestMapping(value = "/loan/editdraft", method = RequestMethod.POST)
-    public void editLoanDraftbyUID(@RequestParam (value = "uniqueLoanId") String uid, @RequestBody LoanRequest loanRequest){
-        //Loan loan = loanRepository.findByuniqueLoanId(uid);
-        //loanService.editDraft(loan,loanRequest); POVILAI
+    public void editLoanDraftbyUID(@RequestParam (value = "code") String code, @RequestBody LoanRequest loanRequest){
+        Loan loan = loanRepository.findByCode(code);
+        loanService.editDraft(loan,loanRequest);
     }
     @RequestMapping(value = "/loan/status", method = RequestMethod.GET)
-    public boolean getStatus(@RequestParam(value = "uniqueLoanId") String uid){
-        //Loan loan = loanRepository.findByuniqueLoanId(uid);
-        //return loan.isStatus(); POVILAI
-        return false;
+    public String getStatus(@RequestParam(value = "code") String code){
+        Loan loan = loanRepository.findByCode(code);
+        return loan.getStatus();
     }
 
 
@@ -68,6 +66,7 @@ public class LoanSystemController {
 //        date.setMonth(Calendar.MONTH);
 
         loan.setAmount(amount);
+        loan.setCode();
         loan.setName("Laura");
         loan.setSurname("Silvanavičiūtė");
         loan.setCity("Vilnius");
