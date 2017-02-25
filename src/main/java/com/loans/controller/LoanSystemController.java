@@ -7,6 +7,9 @@ import com.loans.bean.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.math.BigDecimal;
+import java.util.Currency;
+
 /**
  * Created by pov on 17.2.23.
  */
@@ -38,24 +41,27 @@ public class LoanSystemController {
     }
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
     public Loan getLoanDraftByUID(@RequestParam(value = "uniqueLoanId") String uid){
-        return loanRepository.findByuniqueLoanId(uid);
+        //return loanRepository.findByuniqueLoanId(uid); POVILAI
+        return new Loan();
     }
     @RequestMapping(value = "/loan/editdraft", method = RequestMethod.POST)
     public void editLoanDraftbyUID(@RequestParam (value = "uniqueLoanId") String uid, @RequestBody LoanRequest loanRequest){
-        Loan loan = loanRepository.findByuniqueLoanId(uid);
-        loanService.editDraft(loan,loanRequest);
+        //Loan loan = loanRepository.findByuniqueLoanId(uid);
+        //loanService.editDraft(loan,loanRequest); POVILAI
     }
     @RequestMapping(value = "/loan/status", method = RequestMethod.GET)
     public boolean getStatus(@RequestParam(value = "uniqueLoanId") String uid){
-        Loan loan = loanRepository.findByuniqueLoanId(uid);
-        return loan.isStatus();
+        //Loan loan = loanRepository.findByuniqueLoanId(uid);
+        //return loan.isStatus(); POVILAI
+        return false;
     }
 
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
     public void insertCategory(){
         Loan app = new Loan();
-        app.setLoan_Amount(4444);
+        BigDecimal amount = new BigDecimal("1115.37");
+        app.setAmount(amount);
         loanRepository.save(app);
     }
 

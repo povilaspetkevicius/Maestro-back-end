@@ -1,6 +1,9 @@
 package com.loans.bean.entity;
 
 import javax.persistence.*;
+import java.math.BigDecimal;
+import java.util.Currency;
+import java.util.Date;
 import java.util.UUID;
 
 /**
@@ -8,17 +11,16 @@ import java.util.UUID;
  *
  *
  */
-@Entity(name = "applications")
+@Entity(name = "loans")
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
-    private long id;
-    private String uniqueLoanId;
-    private double loan_Amount;
-    private int loan_Repay_Year;
-    private int loan_Repay_Months;
-    private int loan_Payday;
+    private int id;
+    private String code;
+    private BigDecimal amount;
+    private Date payDate;
+    private int payDay;
     private String name;
     private String surname;
     private String personCode;
@@ -30,48 +32,48 @@ public class Loan {
     private String phoneNum1;
     private String phoneNum2;
     private String email;
-    private int salary;
-    private boolean status;
+    private BigDecimal salary;
+    private String status;
 
     public Loan(){}
 
-    public double getLoan_Amount() {
-        return loan_Amount;
+    public void setId(int id) {
+        this.id = id;
     }
 
-    public void setLoan_Amount(double loan_Amount) {
-        this.loan_Amount = loan_Amount;
+    public void setCode(String code) {
+        this.code = code;
     }
 
-    public int getLoan_Repay_Year() {
-        return loan_Repay_Year;
+    public Date getPayDate() {
+        return payDate;
     }
 
-    public void setLoan_Repay_Year(int loan_Repay_Year) {
-        this.loan_Repay_Year = loan_Repay_Year;
+    public void setPayDate(Date payDate) {
+        this.payDate = payDate;
     }
 
-    public int getLoan_Repay_Months() {
-        return loan_Repay_Months;
+    public BigDecimal getAmount() {
+        return amount;
     }
 
-    public void setLoan_Repay_Months(int loan_Repay_Months) {
-        this.loan_Repay_Months = loan_Repay_Months;
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
     }
 
-    public int getLoan_Payday() {
-        return loan_Payday;
+    public int getPayDay() {
+        return payDay;
     }
 
-    public void setLoan_Payday(int loan_Payday) {
-        this.loan_Payday = loan_Payday;
+    public void setPayDay(int payDay) {
+        this.payDay = payDay;
     }
 
-    public int getSalary() {
+    public BigDecimal getSalary() {
         return salary;
     }
 
-    public void setSalary(int salary) {
+    public void setSalary(BigDecimal salary) {
         this.salary = salary;
     }
 
@@ -167,20 +169,20 @@ public class Loan {
         this.email = email;
     }
 
-    public String getUniqueLoanId() {
-        return uniqueLoanId;
+    public String getCode() {
+        return code;
     }
 
     public void setUniqueLoanId() {
         UUID uuid = UUID.randomUUID();
-        this.uniqueLoanId = String.valueOf(uuid);
+        this.code = String.valueOf(uuid);
     }
 
-    public boolean isStatus() {
+    public String getStatus() {
         return status;
     }
 
-    public void setStatus(boolean status) {
+    public void setStatus(String status) {
         this.status = status;
     }
 }
