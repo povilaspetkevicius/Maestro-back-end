@@ -112,7 +112,7 @@ public class LoanService {
 
 
         if (change){
-            applicationsRepository.delete(loan);
+            //applicationsRepository.delete(loan);
             applicationsRepository.save(application);
         }
     }

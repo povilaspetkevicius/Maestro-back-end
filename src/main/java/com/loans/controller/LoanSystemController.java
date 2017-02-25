@@ -45,7 +45,7 @@ public class LoanSystemController {
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
     }
-    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.POST)
+    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.PUT)
     public void editLoanDraftbyUID(@RequestParam (value = "code") String code, @RequestBody LoanRequest loanRequest){
         Loan loan = loanRepository.findByCode(code);
         loanService.editDraft(loan,loanRequest);
