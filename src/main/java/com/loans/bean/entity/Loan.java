@@ -2,7 +2,6 @@ package com.loans.bean.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Currency;
 import java.util.Date;
 import java.util.UUID;
 
@@ -173,7 +172,7 @@ public class Loan {
         return code;
     }
 
-    public void setUniqueLoanId() {
+    public void setCode() {
         UUID uuid = UUID.randomUUID();
         this.code = String.valueOf(uuid);
     }
