@@ -8,7 +8,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
+import java.util.Calendar;
 import java.util.Currency;
+import java.util.Date;
 
 /**
  * Created by pov on 17.2.23.
@@ -58,11 +60,30 @@ public class LoanSystemController {
 
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
-    public void insertCategory(){
-        Loan app = new Loan();
+    public void insertLoan(){
+        Loan loan = new Loan();
         BigDecimal amount = new BigDecimal("1115.37");
-        app.setAmount(amount);
-        loanRepository.save(app);
+        Date date = new Date();
+//        date.setYear(Calendar.YEAR);
+//        date.setMonth(Calendar.MONTH);
+
+        loan.setAmount(amount);
+        loan.setName("Laura");
+        loan.setSurname("Silvanavičiūtė");
+        loan.setCity("Vilnius");
+        loan.setAddress("Vilniaus g. 132");
+        loan.setCountry("Lithuania");
+        loan.setDocNumber("131131131");
+        loan.setDocType("Passport");
+        loan.setEmail("laraa3@gmail.com");
+        loan.setSalary(amount);
+        loan.setPersonCode("4344344344");
+        loan.setPhoneNum1("868686868");
+        loan.setPhoneNum2("+3706484848");
+        loan.setPayDay(15);
+        //loan.setPayDate(date);
+        loan.setStatus("Draft");
+        loanRepository.save(loan);
     }
 
 }
