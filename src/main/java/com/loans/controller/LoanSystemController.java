@@ -85,5 +85,18 @@ public class LoanSystemController {
         loan.setStatus("Draft");
         loanRepository.save(loan);
     }
+    @RequestMapping(value = "/loan/update/{id}", method = RequestMethod.PUT)
+    public void updateLoan(@PathVariable int id){
+        Loan loan = loanRepository.findOne(id);
+        loan.setName("Jonas");
+        loan.setSurname("Jonauskas");
+        loanRepository.save(loan);
+    }
+
+    @RequestMapping(value = "/loan/delete/{id}", method = RequestMethod.POST)
+    public void deleteLoan(@PathVariable int id){
+        Loan loan = loanRepository.findOne(id);
+        loanRepository.delete(loan);
+    }
 
 }

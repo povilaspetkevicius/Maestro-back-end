@@ -9,6 +9,6 @@ import org.springframework.data.repository.CrudRepository;
  * Basic Repository used for containing all Applications
  *
  */
-public interface LoanRepository extends CrudRepository<Loan,Long>{
+public interface LoanRepository extends CrudRepository<Loan,Integer>{
    // public Loan findByuniqueLoanId(String uniqueLoadId); POVILA
 }
