@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 /**
  * Created by pov on 17.2.23.
  */
-
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoanSystemController {
 
