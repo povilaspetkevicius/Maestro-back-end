@@ -29,7 +29,7 @@ public class LoanSystemController {
     }
 
     //Method for viewing all applications from applications repo
-    @RequestMapping(value = "/clerk", method = RequestMethod.GET)
+    @RequestMapping(value = "/loans", method = RequestMethod.GET)
     public Iterable<Loan> getLoans(){
         return loanRepository.findAll();
     }
