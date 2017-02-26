@@ -30,6 +30,7 @@ public class LoanRequest {
     private BigDecimal salary;
     private String status;
 
+
     public String getCode() {
         return code;
     }

@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Created by pov on 17.2.23.
  */
-@CrossOrigin(origins = "http://localhost:4200")
+//@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoanSystemController {
 
@@ -53,6 +53,10 @@ public class LoanSystemController {
         Loan loan = loanRepository.findByCode(code);
         return loan.getStatus();
     }
+//    @RequestMapping(value = "/loan/getcode", method = RequestMethod.GET)
+//    public String getCode(@RequestParam(value = "id") int id){
+//
+//    }
 
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
