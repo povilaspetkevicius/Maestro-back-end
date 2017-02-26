@@ -2,7 +2,7 @@ package com.loans.bean.entity;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
-import java.util.Date;
+import java.time.LocalDateTime;
 import java.util.UUID;
 
 /**
@@ -10,7 +10,7 @@ import java.util.UUID;
  *
  *
  */
-@Entity(name = "loans")
+@Entity(name = "loan")
 public class Loan {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -18,8 +18,10 @@ public class Loan {
     private int id;
     private String code;
     private BigDecimal amount;
-    private Date payDate;
+    private LocalDateTime submitDate;
     private int payDay;
+    private String payMonth;
+    private int payYear;
     private String name;
     private String surname;
     private String personCode;
@@ -44,12 +46,12 @@ public class Loan {
         this.code = code;
     }
 
-    public Date getPayDate() {
-        return payDate;
+    public LocalDateTime getSubmitDate() {
+        return submitDate;
     }
 
-    public void setPayDate(Date payDate) {
-        this.payDate = payDate;
+    public void setSubmitDate(LocalDateTime submitDate) {
+        this.submitDate = submitDate;
     }
 
     public BigDecimal getAmount() {
@@ -66,6 +68,22 @@ public class Loan {
 
     public void setPayDay(int payDay) {
         this.payDay = payDay;
+    }
+
+    public String getPayMonth() {
+        return payMonth;
+    }
+
+    public void setPayMonth(String payMonth) {
+        this.payMonth = payMonth;
+    }
+
+    public int getPayYear() {
+        return payYear;
+    }
+
+    public void setPayYear(int payYear) {
+        this.payYear = payYear;
     }
 
     public BigDecimal getSalary() {

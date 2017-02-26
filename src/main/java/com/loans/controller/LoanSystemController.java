@@ -8,14 +8,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
-import java.util.Calendar;
-import java.util.Currency;
-import java.util.Date;
+import java.time.LocalDateTime;
 
 /**
  * Created by pov on 17.2.23.
  */
-//@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoanSystemController {
 
@@ -61,10 +59,7 @@ public class LoanSystemController {
     public void insertLoan(){
         Loan loan = new Loan();
         BigDecimal amount = new BigDecimal("1115.37");
-        Date date = new Date();
-//        date.setYear(Calendar.YEAR);
-//        date.setMonth(Calendar.MONTH);
-
+        LocalDateTime localDate = LocalDateTime .now();
         loan.setAmount(amount);
         loan.setCode();
         loan.setName("Laura");
@@ -80,8 +75,10 @@ public class LoanSystemController {
         loan.setPhoneNum1("868686868");
         loan.setPhoneNum2("+3706484848");
         loan.setPayDay(15);
-        //loan.setPayDate(date);
-        loan.setStatus("Draft");
+        loan.setPayMonth("January");
+        loan.setPayYear(2019);
+        loan.setSubmitDate(localDate);
+        loan.setStatus("Unchecked");
         loanRepository.save(loan);
     }
     @RequestMapping(value = "/loan/update/{id}", method = RequestMethod.PUT)

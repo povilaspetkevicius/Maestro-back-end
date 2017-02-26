@@ -24,7 +24,7 @@ public class LoanService {
         application.getId();
         application.setCode();
         application.setAmount(loanRequest.getAmount());
-        application.setPayDate(loanRequest.getPayDate());
+        application.setSubmitDate(loanRequest.getSubmitDate());
         application.setPayDay(loanRequest.getPayDay());
         application.setName(loanRequest.getName());
         application.setSurname(loanRequest.getSurname());
@@ -48,8 +48,8 @@ public class LoanService {
             application.setAmount(loanRequest.getAmount());
             change = true;
         }
-        if (application.getPayDate()!=loanRequest.getPayDate()){
-            application.setPayDate(loanRequest.getPayDate());
+        if (application.getSubmitDate()!=loanRequest.getSubmitDate()){
+            application.setSubmitDate(loanRequest.getSubmitDate());
             change = true;
         }
         if (application.getPayDay()!=loanRequest.getPayDay()){
