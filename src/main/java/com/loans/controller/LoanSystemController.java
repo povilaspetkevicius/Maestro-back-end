@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Created by pov on 17.2.23.
  */
-@CrossOrigin(origins = "http://localhost:4200")
+@CrossOrigin(origins = "https://maestro-front.herokuapp.com/")
 @RestController
 public class LoanSystemController {
 
