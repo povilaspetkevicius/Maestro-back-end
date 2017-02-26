@@ -35,7 +35,7 @@ public class LoanSystemController {
     }
 
     //Method for posting an application to app repo
-    @RequestMapping(value = "/loan/create", consumes =  "application/json", produces = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/loans", consumes =  "application/json", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest applicationRequest){
         loanService.createApplication(applicationRequest);
     }
