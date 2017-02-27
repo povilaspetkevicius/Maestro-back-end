@@ -6,6 +6,8 @@ import com.loans.bean.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
+
 /**
  * Created by pov on 17.2.23.
  *
@@ -19,10 +21,13 @@ public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
 
-    public void createLoan(LoanRequest loanRequest){
+    public void createLoan(LoanRequest loanRequest, LocalDateTime localDate){
         Loan loan = new Loan();
+
+
         loan.getId();
         loan.setCode();
+        loan.setSubmitDate(localDate);
         loan.setAmount(loanRequest.getAmount());
         loan.setSubmitDate(loanRequest.getSubmitDate());
         loan.setPayDay(loanRequest.getPayDay());
@@ -39,6 +44,7 @@ public class LoanService {
         loan.setPhoneNum2(loanRequest.getPhoneNum2());
         loan.setEmail(loanRequest.getEmail());
         loan.setStatus(loanRequest.getStatus());
+        loan.setSubmitDate(localDate);
         loanRepository.save(loan);
     }
     public void editDraft(Loan loan, LoanRequest loanRequest){
