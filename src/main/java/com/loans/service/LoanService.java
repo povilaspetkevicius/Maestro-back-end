@@ -21,16 +21,14 @@ public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
 
-    public void createLoan(LoanRequest loanRequest, LocalDateTime localDate){
+    public void createLoan(LoanRequest loanRequest, boolean isDraft){
         Loan loan = new Loan();
-
-
-        loan.getId();
+        //loan.getId();
         loan.setCode();
-        loan.setSubmitDate(localDate);
         loan.setAmount(loanRequest.getAmount());
-        loan.setSubmitDate(loanRequest.getSubmitDate());
         loan.setPayDay(loanRequest.getPayDay());
+        loan.setPayYear(loanRequest.getPayYear());
+        loan.setPayMonth(loanRequest.getPayMonth());
         loan.setName(loanRequest.getName());
         loan.setSurname(loanRequest.getSurname());
         loan.setSalary(loanRequest.getSalary());
@@ -41,9 +39,15 @@ public class LoanService {
         loan.setCity(loanRequest.getCity());
         loan.setAddress(loanRequest.getAddress());
         loan.setPhoneNum1(loanRequest.getPhoneNum1());
-        loan.setPhoneNum2(loanRequest.getPhoneNum2());
+        //loan.setPhoneNum2(loanRequest.getPhoneNum2());
         loan.setEmail(loanRequest.getEmail());
-        loan.setStatus(loanRequest.getStatus());
+        if(isDraft){
+            loan.setStatus("Draft");
+        }
+        else{
+            loan.setStatus("Unchecked");
+        }
+        LocalDateTime localDate = LocalDateTime .now();
         loan.setSubmitDate(localDate);
         loanRepository.save(loan);
     }
@@ -115,7 +119,6 @@ public class LoanService {
             change = true;
         }
         if (change){
-            //loanRepository.delete(loan);
             loanRepository.save(application);
         }
     }
