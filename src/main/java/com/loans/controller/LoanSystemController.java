@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Created by pov on 17.2.23.
  */
-@CrossOrigin(origins = "*")
+
 @RestController
 public class LoanSystemController {
 
