@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Created by pov on 17.2.23.
  */
-
+//@CrossOrigin(value = "/L")
 @RestController
 public class LoanSystemController {
 
@@ -37,14 +37,16 @@ public class LoanSystemController {
     //Method for posting an application to app repo
     @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest applicationRequest){
-        loanService.createLoan(applicationRequest);
+
+        LocalDateTime localDate = LocalDateTime .now();
+        loanService.createLoan(applicationRequest,localDate);
     }
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
     }
-    @RequestMapping(value = "/loan/editdraft", produces = "application/json", method = RequestMethod.POST)
-    public void editLoanDraftbyUID(@RequestParam(value = "code") String code, @RequestBody LoanRequest loanRequest){
+    @RequestMapping(value = "/loan/editdraft", produces = "application/json", method = RequestMethod.PUT)
+    public void editLoanDraftbyUID(@RequestBody LoanRequest loanRequest){
         Loan loan = loanRepository.findByCode(loanRequest.getCode());
         loanService.editDraft(loan,loanRequest);
     }

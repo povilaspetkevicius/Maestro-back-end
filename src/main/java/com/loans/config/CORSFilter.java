@@ -1,3 +1,4 @@
+/*
 package com.loans.config;
 
 import org.springframework.stereotype.Component;
@@ -26,4 +27,4 @@ public class CORSFilter implements Filter {
     public void destroy() {
     }
 
-}
+}*/
