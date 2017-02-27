@@ -17,29 +17,29 @@ import org.springframework.stereotype.Service;
 @Service
 public class LoanService {
     @Autowired
-    private LoanRepository applicationsRepository;
+    private LoanRepository loanRepository;
 
-    public void createApplication(LoanRequest loanRequest){
-        Loan application = new Loan();
-        application.getId();
-        application.setCode();
-        application.setAmount(loanRequest.getAmount());
-        application.setSubmitDate(loanRequest.getSubmitDate());
-        application.setPayDay(loanRequest.getPayDay());
-        application.setName(loanRequest.getName());
-        application.setSurname(loanRequest.getSurname());
-        application.setSalary(loanRequest.getSalary());
-        application.setPersonCode(loanRequest.getPersonCode());
-        application.setDocType(loanRequest.getDocType());
-        application.setDocNumber(loanRequest.getDocNumber());
-        application.setCountry(loanRequest.getCountry());
-        application.setCity(loanRequest.getCity());
-        application.setAddress(loanRequest.getAddress());
-        application.setPhoneNum1(loanRequest.getPhoneNum1());
-        application.setPhoneNum2(loanRequest.getPhoneNum2());
-        application.setEmail(loanRequest.getEmail());
-        application.setStatus(loanRequest.getStatus());
-        applicationsRepository.save(application);
+    public void createLoan(LoanRequest loanRequest){
+        Loan loan = new Loan();
+        loan.getId();
+        loan.setCode();
+        loan.setAmount(loanRequest.getAmount());
+        loan.setSubmitDate(loanRequest.getSubmitDate());
+        loan.setPayDay(loanRequest.getPayDay());
+        loan.setName(loanRequest.getName());
+        loan.setSurname(loanRequest.getSurname());
+        loan.setSalary(loanRequest.getSalary());
+        loan.setPersonCode(loanRequest.getPersonCode());
+        loan.setDocType(loanRequest.getDocType());
+        loan.setDocNumber(loanRequest.getDocNumber());
+        loan.setCountry(loanRequest.getCountry());
+        loan.setCity(loanRequest.getCity());
+        loan.setAddress(loanRequest.getAddress());
+        loan.setPhoneNum1(loanRequest.getPhoneNum1());
+        loan.setPhoneNum2(loanRequest.getPhoneNum2());
+        loan.setEmail(loanRequest.getEmail());
+        loan.setStatus(loanRequest.getStatus());
+        loanRepository.save(loan);
     }
     public void editDraft(Loan loan, LoanRequest loanRequest){
         Loan application = loan;
@@ -108,13 +108,15 @@ public class LoanService {
             application.setStatus(loanRequest.getStatus());
             change = true;
         }
-
-
-
         if (change){
-            //applicationsRepository.delete(loan);
-            applicationsRepository.save(application);
+            //loanRepository.delete(loan);
+            loanRepository.save(application);
         }
+    }
+    public void updateStatus(LoanRequest loanRequest){
+        Loan changeStatus= loanRepository.findOne(loanRequest.getId());
+        changeStatus.setStatus(loanRequest.getStatus());
+        loanRepository.save(changeStatus);
     }
 
 
