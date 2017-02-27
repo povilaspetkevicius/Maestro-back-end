@@ -10,11 +10,12 @@ import java.time.LocalDateTime;
  * Class used for getting Request body's info
  */
 public class LoanRequest {
+    private int id;
     private String code;
     private BigDecimal amount;
     private LocalDateTime submitDate;
     private int payDay;
-    private String payMonth;
+    private int payMonth;
     private int payYear;
     private String name;
     private String surname;
@@ -29,6 +30,14 @@ public class LoanRequest {
     private String email;
     private BigDecimal salary;
     private String status;
+
+    public int getId() {
+        return id;
+    }
+
+    public void setId(int id) {
+        this.id = id;
+    }
 
     public String getCode() {
         return code;
@@ -62,11 +71,11 @@ public class LoanRequest {
         this.payDay = payDay;
     }
 
-    public String getPayMonth() {
+    public int getPayMonth() {
         return payMonth;
     }
 
-    public void setPayMonth(String payMonth) {
+    public void setPayMonth(int payMonth) {
         this.payMonth = payMonth;
     }
 

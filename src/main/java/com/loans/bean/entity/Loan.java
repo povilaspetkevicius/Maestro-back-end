@@ -20,7 +20,7 @@ public class Loan {
     private BigDecimal amount;
     private LocalDateTime submitDate;
     private int payDay;
-    private String payMonth;
+    private int payMonth;
     private int payYear;
     private String name;
     private String surname;
@@ -70,11 +70,11 @@ public class Loan {
         this.payDay = payDay;
     }
 
-    public String getPayMonth() {
+    public int getPayMonth() {
         return payMonth;
     }
 
-    public void setPayMonth(String payMonth) {
+    public void setPayMonth(int payMonth) {
         this.payMonth = payMonth;
     }
 
