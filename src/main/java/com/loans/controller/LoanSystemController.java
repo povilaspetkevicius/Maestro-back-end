@@ -13,8 +13,7 @@ import java.time.LocalDateTime;
 /**
  * Created by pov on 17.2.23.
  */
-@CrossOrigin( value = "https://maestroloan.herokuapp.com/")
-
+@CrossOrigin(origins = "*")
 @RestController
 public class LoanSystemController {
 
@@ -36,7 +35,7 @@ public class LoanSystemController {
     }
 
     //Method for posting an application to app repo
-    @RequestMapping(value = "/loans", consumes =  "application/json", produces = "application/json",method = RequestMethod.POST)
+    @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest applicationRequest){
         loanService.createLoan(applicationRequest);
     }
@@ -44,9 +43,9 @@ public class LoanSystemController {
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
     }
-    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.PUT)
-    public void editLoanDraftbyUID(@RequestParam (value = "code") String code, @RequestBody LoanRequest loanRequest){
-        Loan loan = loanRepository.findByCode(code);
+    @RequestMapping(value = "/loan/editdraft", produces = "application/json", method = RequestMethod.POST)
+    public void editLoanDraftbyUID(@RequestParam(value = "code") String code, @RequestBody LoanRequest loanRequest){
+        Loan loan = loanRepository.findByCode(loanRequest.getCode());
         loanService.editDraft(loan,loanRequest);
     }
     @RequestMapping(value = "/loan/status", method = RequestMethod.GET)
