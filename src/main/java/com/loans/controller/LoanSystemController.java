@@ -31,7 +31,8 @@ public class LoanSystemController {
     //Method for viewing all applications from applications repo
     @RequestMapping(value = "/loans", method = RequestMethod.GET)
     public Iterable<Loan> getLoans(){
-        return loanRepository.findAll();
+        //return loanRepository.findAll();
+        return loanRepository.findAllByOrderBySubmitDateDesc();
     }
 
     //Method for posting an application to app repo
@@ -43,9 +44,11 @@ public class LoanSystemController {
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
     }
-    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.PUT)
-    public void editLoanDraftbyUID(@RequestParam (value = "code") String code, @RequestBody LoanRequest loanRequest){
-        Loan loan = loanRepository.findByCode(code);
+
+    @RequestMapping(value = "/loan/editdraft", method = RequestMethod.POST)
+    public void editLoanDraftbyUID(@RequestBody LoanRequest loanRequest){
+        Loan loan = loanRepository.findByCode(loanRequest.getCode());
+        loanRequest.setName("POVILAS");
         loanService.editDraft(loan,loanRequest);
     }
     @RequestMapping(value = "/loan/status", method = RequestMethod.GET)
@@ -97,8 +100,6 @@ public class LoanSystemController {
 
     @RequestMapping(value = "/loanstatus/update", produces = "application/json",method = RequestMethod.PUT)
     public void updateStatus(@RequestBody LoanRequest loanRequest){
-        //applicationRequest.i
-        //loanService.createLoan(loanRequest); - update
         loanService.updateStatus(loanRequest);
     }
 

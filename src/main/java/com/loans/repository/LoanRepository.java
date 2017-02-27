@@ -3,6 +3,8 @@ package com.loans.repository;
 import com.loans.bean.entity.Loan;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.List;
+
 /**
  * Created by pov on 17.2.23.
  *
@@ -11,4 +13,6 @@ import org.springframework.data.repository.CrudRepository;
  */
 public interface LoanRepository extends CrudRepository<Loan,Integer>{
     public Loan findByCode(String code);
+    public List<Loan> findAllByOrderByIdAsc();
+    public List<Loan> findAllByOrderBySubmitDateDesc();
 }
