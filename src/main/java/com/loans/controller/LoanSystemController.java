@@ -95,10 +95,15 @@ public class LoanSystemController {
         loanRepository.save(loan);
     }
 
-    @RequestMapping(value = "/loan/delete/{id}", method = RequestMethod.POST)
-    public void deleteLoan(@PathVariable int id){
+    @RequestMapping(value = "/loan/deleteFromUrl/{id}", method = RequestMethod.POST)
+    public void deleteLoanFromUrl(@PathVariable int id){
         Loan loan = loanRepository.findOne(id);
         loanRepository.delete(loan);
+    }
+
+    @RequestMapping(value = "/loan/delete", produces = "application/json",method = RequestMethod.POST)
+    public void deleteLoan(@RequestBody LoanRequest loanRequest){
+        loanService.deleteLoan(loanRequest);
     }
 
     @RequestMapping(value = "/loanstatus/update", produces = "application/json",method = RequestMethod.PUT)

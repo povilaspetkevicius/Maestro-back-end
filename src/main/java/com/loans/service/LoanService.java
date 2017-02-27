@@ -128,5 +128,10 @@ public class LoanService {
         loanRepository.save(changeStatus);
     }
 
+    public void deleteLoan(LoanRequest loanRequest){
+        Loan loan = loanRepository.findOne(loanRequest.getId());
+        loanRepository.delete(loan);
+    }
+
 
 }
