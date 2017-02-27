@@ -38,7 +38,7 @@ public class LoanSystemController {
     //Method for posting an application to app repo
     @RequestMapping(value = "/loans", consumes =  "application/json", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest applicationRequest){
-        loanService.createApplication(applicationRequest);
+        loanService.createLoan(applicationRequest);
     }
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
@@ -80,8 +80,8 @@ public class LoanSystemController {
         loan.setPhoneNum1("868686868");
         loan.setPhoneNum2("+3706484848");
         loan.setPayDay(15);
-        loan.setPayMonth("January");
-        loan.setPayYear(2019);
+        loan.setPayMonth(3);
+        loan.setPayYear(7);
         loan.setSubmitDate(localDate);
         loan.setStatus("Unchecked");
         loanRepository.save(loan);
@@ -98,6 +98,13 @@ public class LoanSystemController {
     public void deleteLoan(@PathVariable int id){
         Loan loan = loanRepository.findOne(id);
         loanRepository.delete(loan);
+    }
+
+    @RequestMapping(value = "/loanstatus/update", produces = "application/json",method = RequestMethod.PUT)
+    public void updateStatus(@RequestBody LoanRequest loanRequest){
+        //applicationRequest.i
+        //loanService.createLoan(loanRequest); - update
+        loanService.updateStatus(loanRequest);
     }
 
 }
