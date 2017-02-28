@@ -190,10 +190,6 @@ public class Loan {
         return code;
     }
 
-    public void setCode() {
-        UUID uuid = UUID.randomUUID();
-        this.code = String.valueOf(uuid);
-    }
 
     public String getStatus() {
         return status;

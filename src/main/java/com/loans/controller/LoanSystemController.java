@@ -12,6 +12,9 @@ import java.time.LocalDateTime;
 
 /**
  * Created by pov on 17.2.23.
+ *
+ *
+ * HASHA GENERUOTI FRONTE!!!!!!!!
  */
 @CrossOrigin(origins = "http://localhost:4200")
 @RestController
@@ -46,6 +49,10 @@ public class LoanSystemController {
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
     }
+    @RequestMapping(value = "/loan/getcode", method = RequestMethod.GET)
+    public Loan getCodeByName(@RequestParam(value = "name") String name){
+        return loanRepository.findByName(name);
+    }
     @RequestMapping(value = "/loan/editdraft", produces = "application/json", method = RequestMethod.PUT)
     public void editLoanDraftbyUID(@RequestBody LoanRequest loanRequest){
         Loan loan = loanRepository.findByCode(loanRequest.getCode());
@@ -64,7 +71,7 @@ public class LoanSystemController {
         BigDecimal amount = new BigDecimal("1115.37");
         LocalDateTime localDate = LocalDateTime .now();
         loan.setAmount(amount);
-        loan.setCode();
+        loan.setCode("bbb");
         loan.setName("Laura");
         loan.setSurname("Silvanavičiūtė");
         loan.setCity("Vilnius");
@@ -103,6 +110,13 @@ public class LoanSystemController {
         //applicationRequest.i
         //loanService.createLoan(loanRequest); - update
         loanService.updateStatus(loanRequest);
+    }
+    @RequestMapping(value = "/loan/test", produces = "application/json",method = RequestMethod.POST)
+    public void test(@RequestBody LoanRequest applicationRequest){
+
+        LocalDateTime localDate = LocalDateTime .now();
+        String codeback = loanService.createLoan(applicationRequest,localDate);
+
     }
 
 }

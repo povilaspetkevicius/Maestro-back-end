@@ -15,4 +15,5 @@ public interface LoanRepository extends CrudRepository<Loan,Integer>{
     public Loan findByCode(String code);
     public List<Loan> findAllByOrderByIdAsc();
     public List<Loan> findAllByOrderBySubmitDateDesc();
+    public Loan findByName(String name);
 }
