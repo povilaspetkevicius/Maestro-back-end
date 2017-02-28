@@ -41,12 +41,14 @@ public class LoanSystemController {
     //Method for posting an application to app repo
     @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest loanRequest){
-        loanService.createLoan(loanRequest, false);
+        LocalDateTime localDateTime = LocalDateTime .now();
+        loanService.createLoan(loanRequest, true, localDateTime);
     }
 
     @RequestMapping(value = "/loan/createdraft", produces = "application/json",method = RequestMethod.POST)
     public void addLoanDraft(@RequestBody LoanRequest loanRequest){
-        loanService.createLoan(loanRequest, true);
+        LocalDateTime localDateTime = LocalDateTime .now();
+        loanService.createLoan(loanRequest, true, localDateTime);
     }
 
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
@@ -116,13 +118,6 @@ public class LoanSystemController {
     @RequestMapping(value = "/loanstatus/update", produces = "application/json",method = RequestMethod.PUT)
     public void updateStatus(@RequestBody LoanRequest loanRequest){
         loanService.updateStatus(loanRequest);
-    }
-    @RequestMapping(value = "/loan/test", produces = "application/json",method = RequestMethod.POST)
-    public void test(@RequestBody LoanRequest applicationRequest){
-
-        LocalDateTime localDate = LocalDateTime .now();
-        String codeback = loanService.createLoan(applicationRequest,localDate);
-
     }
 
 }

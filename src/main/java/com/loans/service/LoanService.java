@@ -21,16 +21,13 @@ public class LoanService {
     @Autowired
     private LoanRepository loanRepository;
 
-    public void createLoan(LoanRequest loanRequest, boolean isDraft){
-    public String createLoan(LoanRequest loanRequest, LocalDateTime localDate){
+    public void createLoan(LoanRequest loanRequest, boolean isDraft,LocalDateTime localDateTime){
         Loan loan = new Loan();
 
 
         loan.getId();
         loan.setCode(loanRequest.getCode());
-        loan.setSubmitDate(localDate);
-        //loan.getId();
-        loan.setCode();
+        loan.setSubmitDate(localDateTime);
         loan.setAmount(loanRequest.getAmount());
         loan.setPayDay(loanRequest.getPayDay());
         loan.setPayYear(loanRequest.getPayYear());
@@ -45,7 +42,6 @@ public class LoanService {
         loan.setCity(loanRequest.getCity());
         loan.setAddress(loanRequest.getAddress());
         loan.setPhoneNum1(loanRequest.getPhoneNum1());
-        //loan.setPhoneNum2(loanRequest.getPhoneNum2());
         loan.setEmail(loanRequest.getEmail());
         if(isDraft){
             loan.setStatus("Draft");
@@ -56,7 +52,6 @@ public class LoanService {
         LocalDateTime localDate = LocalDateTime .now();
         loan.setSubmitDate(localDate);
         loanRepository.save(loan);
-        return loan.getCode();
     }
     public void editDraft(Loan loan, LoanRequest loanRequest){
         Loan application = loan;
