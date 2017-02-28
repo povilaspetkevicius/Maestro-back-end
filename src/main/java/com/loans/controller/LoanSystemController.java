@@ -59,6 +59,7 @@ public class LoanSystemController {
     public Loan getCodeByName(@RequestParam(value = "name") String name){
         return loanRepository.findByName(name);
     }
+
     @RequestMapping(value = "/loan/editdraft", produces = "application/json", method = RequestMethod.PUT)
     public void editLoanDraftbyUID(@RequestBody LoanRequest loanRequest){
         Loan loan = loanRepository.findByCode(loanRequest.getCode());
