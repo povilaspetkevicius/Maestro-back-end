@@ -40,11 +40,15 @@ public class LoanSystemController {
 
     //Method for posting an application to app repo
     @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
-    public void addLoan(@RequestBody LoanRequest applicationRequest){
-
-        LocalDateTime localDate = LocalDateTime .now();
-        loanService.createLoan(applicationRequest,localDate);
+    public void addLoan(@RequestBody LoanRequest loanRequest){
+        loanService.createLoan(loanRequest, false);
     }
+
+    @RequestMapping(value = "/loan/createdraft", produces = "application/json",method = RequestMethod.POST)
+    public void addLoanDraft(@RequestBody LoanRequest loanRequest){
+        loanService.createLoan(loanRequest, true);
+    }
+
     @RequestMapping(value = "/loan/viewdraft", method = RequestMethod.GET)
     public Loan getLoanDraftByUID(@RequestParam(value = "code") String code){
         return loanRepository.findByCode(code);
@@ -63,7 +67,6 @@ public class LoanSystemController {
         Loan loan = loanRepository.findByCode(code);
         return loan.getStatus();
     }
-
 
     @RequestMapping(value = "/loan/new", method = RequestMethod.POST)
     public void insertLoan(){
@@ -99,16 +102,19 @@ public class LoanSystemController {
         loanRepository.save(loan);
     }
 
-    @RequestMapping(value = "/loan/delete/{id}", method = RequestMethod.POST)
-    public void deleteLoan(@PathVariable int id){
+    @RequestMapping(value = "/loan/deleteFromUrl/{id}", method = RequestMethod.POST)
+    public void deleteLoanFromUrl(@PathVariable int id){
         Loan loan = loanRepository.findOne(id);
         loanRepository.delete(loan);
     }
 
+    @RequestMapping(value = "/loan/delete", produces = "application/json",method = RequestMethod.POST)
+    public void deleteLoan(@RequestBody LoanRequest loanRequest){
+        loanService.deleteLoan(loanRequest);
+    }
+
     @RequestMapping(value = "/loanstatus/update", produces = "application/json",method = RequestMethod.PUT)
     public void updateStatus(@RequestBody LoanRequest loanRequest){
-        //applicationRequest.i
-        //loanService.createLoan(loanRequest); - update
         loanService.updateStatus(loanRequest);
     }
     @RequestMapping(value = "/loan/test", produces = "application/json",method = RequestMethod.POST)
