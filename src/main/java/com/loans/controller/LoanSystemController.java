@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  *
  * HASHA GENERUOTI FRONTE!!!!!!!!
  */
-@CrossOrigin(value = "*", maxAge = 3600)
+@CrossOrigin(value = "https://maestroloan.herokuapp.com/", maxAge = 3600)
 @RestController
 public class LoanSystemController {
 
