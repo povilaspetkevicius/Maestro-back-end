@@ -6,6 +6,7 @@ import com.loans.bean.entity.Loan;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.math.BigDecimal;
 import java.time.LocalDateTime;
 
 /**
@@ -137,6 +138,36 @@ public class LoanService {
 
     public Loan getLoanByCode(String code){
         return loanRepository.findByCode(code);
+    }
+
+    public void updateLoanDraft (LoanRequest loanRequest, boolean isDraft){
+        Loan loan = loanRepository.findByCode(loanRequest.getCode());
+        loan.setId(loanRequest.getId());
+        LocalDateTime localDateTime = LocalDateTime .now();
+        loan.setSubmitDate(localDateTime);
+        loan.setAmount(loanRequest.getAmount());
+        loan.setPayDay(loanRequest.getPayDay());
+        loan.setPayYear(loanRequest.getPayYear());
+        loan.setPayMonth(loanRequest.getPayMonth());
+        loan.setName(loanRequest.getName());
+        loan.setSurname(loanRequest.getSurname());
+        loan.setSalary(loanRequest.getSalary());
+        loan.setPersonCode(loanRequest.getPersonCode());
+        loan.setDocType(loanRequest.getDocType());
+        loan.setDocNumber(loanRequest.getDocNumber());
+        loan.setCountry(loanRequest.getCountry());
+        loan.setCity(loanRequest.getCity());
+        loan.setAddress(loanRequest.getAddress());
+        loan.setPhoneNum1(loanRequest.getPhoneNum1());
+        loan.setEmail(loanRequest.getEmail());
+        if(isDraft){
+            loan.setStatus("Draft");
+        }
+        else{
+            loan.setStatus("Unchecked");
+        }
+        loanRepository.save(loan);
+        //
     }
 
 

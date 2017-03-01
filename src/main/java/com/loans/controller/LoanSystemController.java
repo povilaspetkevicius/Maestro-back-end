@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.logging.Logger;
 
 /**
  * Created by pov on 17.2.23.
@@ -42,7 +43,7 @@ public class LoanSystemController {
     @RequestMapping(value = "/loan/create", produces = "application/json",method = RequestMethod.POST)
     public void addLoan(@RequestBody LoanRequest loanRequest){
         LocalDateTime localDateTime = LocalDateTime .now();
-        loanService.createLoan(loanRequest, true, localDateTime);
+        loanService.createLoan(loanRequest, false, localDateTime);
     }
 
     @RequestMapping(value = "/loan/createdraft", produces = "application/json",method = RequestMethod.POST)
@@ -124,7 +125,13 @@ public class LoanSystemController {
 
     @RequestMapping(value = "/loan/findByCode", method = RequestMethod.GET)
     public Loan getLoanStatusById(@RequestParam(value = "code") String code){
+        System.out.println("ERROR: " + loanService.getLoanByCode(code));
         return loanService.getLoanByCode(code);
+    }
+
+    @RequestMapping(value = "/loandraft/update", produces = "application/json",method = RequestMethod.PUT)
+    public void editLoanDraft(@RequestBody LoanRequest loanRequest){
+         loanService.updateLoanDraft(loanRequest, true);
     }
 
 }
