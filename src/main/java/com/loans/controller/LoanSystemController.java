@@ -121,4 +121,10 @@ public class LoanSystemController {
         loanService.updateStatus(loanRequest);
     }
 
+
+    @RequestMapping(value = "/loan/findByCode", method = RequestMethod.GET)
+    public Loan getLoanStatusById(@RequestParam(value = "code") String code){
+        return loanService.getLoanByCode(code);
+    }
+
 }

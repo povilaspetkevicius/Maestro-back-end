@@ -135,5 +135,9 @@ public class LoanService {
         loanRepository.delete(loan);
     }
 
+    public Loan getLoanByCode(String code){
+        return loanRepository.findByCode(code);
+    }
+
 
 }
