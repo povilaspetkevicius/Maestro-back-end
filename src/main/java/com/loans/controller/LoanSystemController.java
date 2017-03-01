@@ -16,7 +16,7 @@ import java.time.LocalDateTime;
  *
  * HASHA GENERUOTI FRONTE!!!!!!!!
  */
-@CrossOrigin(value = "*", maxAge = 3600)
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class LoanSystemController {
 
